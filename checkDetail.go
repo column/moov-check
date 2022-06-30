@@ -9,6 +9,8 @@ import (
 	"fmt"
 	"strings"
 	"unicode/utf8"
+
+	"github.com/segmentio/ksuid"
 )
 
 // Errors specific to a CheckDetail Record
@@ -21,6 +23,8 @@ var (
 type CheckDetail struct {
 	// ID is a client defined string used as a reference to this record.
 	ID string `json:"id"`
+	// Column CheckTransferID.ID
+	CheckTransferID ksuid.KSUID
 	// RecordType defines the type of record.
 	recordType string
 	// AuxiliaryOnUs identifies a code used on commercial checks at the discretion of the payor bank.
