@@ -183,13 +183,16 @@ func (cl *CashLetter) build() error {
 			cashLetterImagesCount = cashLetterImagesCount + len(cd.ImageViewDetail)
 		}
 
+		// Sequence  Number
+		rdSequenceNumber := 1
+
 		// Returns Items
 		for _, rd := range b.Returns {
 
-			// Sequence  Number
-			var rdSequenceNumber int
-			rdSequenceNumber++
-
+			if rd.EceInstitutionItemSequenceNumber != "" {
+				i := rd.parseNumField(rd.EceInstitutionItemSequenceNumber)
+				rdSequenceNumber = i
+			}
 			// Record Numbers
 			rdAddendumARecordNumber := 1
 			rdAddendumDRecordNumber := 1
@@ -216,6 +219,7 @@ func (cl *CashLetter) build() error {
 				}
 			}
 
+			rdSequenceNumber++
 			cashLetterItemsCount = cashLetterItemsCount + 1
 			cashLetterTotalAmount = cashLetterTotalAmount + rd.ItemAmount
 			cashLetterImagesCount = cashLetterImagesCount + len(rd.ImageViewDetail)
