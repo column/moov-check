@@ -325,7 +325,7 @@ func (w *Writer) writeReturnImageView(rd *ReturnDetail) error {
 	ivDetail := rd.GetImageViewDetail()
 	ivData := rd.GetImageViewData()
 	ivAnalysis := rd.GetImageViewAnalysis()
-	
+
 	for i := range ivDetail {
 		if err := w.writeLine(&ivDetail[i]); err != nil {
 			return err
