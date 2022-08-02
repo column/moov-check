@@ -321,25 +321,26 @@ func (w *Writer) writeReturnDetailAddendum(rd *ReturnDetail) error {
 
 // writeReturnImageView writes ImageViews (Detail, Data, Analysis) to a ReturnDetail
 func (w *Writer) writeReturnImageView(rd *ReturnDetail) error {
+
 	ivDetail := rd.GetImageViewDetail()
+	ivData := rd.GetImageViewData()
+	ivAnalysis := rd.GetImageViewAnalysis()
+	
 	for i := range ivDetail {
 		if err := w.writeLine(&ivDetail[i]); err != nil {
 			return err
 		}
-	}
-
-	ivData := rd.GetImageViewData()
-	for i := range ivData {
-		if err := w.writeLine(&ivData[i]); err != nil {
-			return err
+		if len(ivData) > 0 && len(ivData) >= i-1 {
+			if err := w.writeLine(&ivData[i]); err != nil {
+				return err
+			}
+		}
+		if len(ivAnalysis) > 0 && len(ivAnalysis) >= i-1 {
+			if err := w.writeLine(&ivAnalysis[i]); err != nil {
+				return err
+			}
 		}
 	}
 
-	ivAnalysis := rd.GetImageViewAnalysis()
-	for i := range ivAnalysis {
-		if err := w.writeLine(&ivAnalysis[i]); err != nil {
-			return err
-		}
-	}
 	return nil
 }
