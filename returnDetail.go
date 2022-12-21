@@ -11,6 +11,8 @@ import (
 	"strings"
 	"time"
 	"unicode/utf8"
+
+	"github.com/segmentio/ksuid"
 )
 
 // Errors specific to a ReturnDetail Record
@@ -34,6 +36,8 @@ func init() {
 type ReturnDetail struct {
 	// ID is a client defined string used as a reference to this record.
 	ID string `json:"id"`
+	// Column CheckReturnID.ID
+	CheckReturnID ksuid.KSUID
 	// RecordType defines the type of record.
 	recordType string
 	// PayorBankRoutingNumber identifies a number that identifies the institution by or through which the item is
