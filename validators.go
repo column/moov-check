@@ -582,6 +582,8 @@ func (v *validator) isDigitalSignatureIndicator(code int) error {
 func (v *validator) isDigitalSignatureMethod(code string) error {
 	switch code {
 	case
+		// Sometimes we receive 0 instead of 00
+		"0",
 		// 00: Digital Signature Algorithm (DSA) with SHA1 (ANSI X9.30)
 		"00",
 		// 01: RSA with MD5 (ANSI X9.31)
