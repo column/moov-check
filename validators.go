@@ -13,7 +13,7 @@ import (
 var (
 	//upperAlphanumericRegex    = regexp.MustCompile(`[^ A-Z0-9!"#$%&'()*+,-.\\/:;<>=?@\[\]^_{}|~]+`)
 	alphanumericRegex        = regexp.MustCompile(`[^ a-zA-Z0-9]`)
-	alphanumericRegexSpecial = regexp.MustCompile(`[^ \w!"#$%&'()*+,-.\\/:;<>=?@\[\]^_{}|~]+`)
+	alphanumericRegexSpecial = regexp.MustCompile(`[^ \x1E\w!"#$%&'()*+,-.\\/:;<>=?@\[\]^_{}|~]+`)
 	numericRegex             = regexp.MustCompile(`[^ 0-9]`)
 	msgAlphanumeric          = "has non alphanumeric characters"
 	msgAlphanumericSpecial   = "has non alphanumeric or special characters"
