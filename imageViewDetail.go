@@ -359,11 +359,11 @@ func (ivDetail *ImageViewDetail) fieldInclusion() error {
 			Value: ivDetail.ImageCreatorRoutingNumber,
 			Msg:   msgFieldInclusion + ", did you use ImageViewDetail()?"}
 	}
-	if ivDetail.ImageCreatorRoutingNumberField() == "000000000" {
-		return &FieldError{FieldName: "ImageCreatorRoutingNumber",
-			Value: ivDetail.ImageCreatorRoutingNumber,
-			Msg:   msgFieldInclusion + ", did you use ImageViewDetail()?"}
-	}
+	//if ivDetail.ImageCreatorRoutingNumberField() == "000000000" {
+	//	return &FieldError{FieldName: "ImageCreatorRoutingNumber",
+	//		Value: ivDetail.ImageCreatorRoutingNumber,
+	//		Msg:   msgFieldInclusion + ", did you use ImageViewDetail()?"}
+	//}
 	if ivDetail.ImageCreatorDate.IsZero() {
 		return &FieldError{FieldName: "ImageCreatorDate",
 			Value: ivDetail.ImageCreatorDate.String(),
